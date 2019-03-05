@@ -1,0 +1,14 @@
+# Read the documentation: https://github.com/suncat2000/MobileDetectBundle/blob/v1.0.5/Resources/doc/index.md
+mobile_detect:
+   redirect:
+       # full:
+       #     is_enabled: true
+       #     host: http://site.com
+       #     action: redirect
+       # mobile:
+       #     is_enabled: true
+       #     host: https://www.peeper.fr/sorrymobile
+       #     action: redirect
+       detect_tablet_as_mobile: true
+   service:
+       mobile_detector: mobile_detect.mobile_detector.default

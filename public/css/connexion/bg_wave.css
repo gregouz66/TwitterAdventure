@@ -1,0 +1,20 @@
+[id^="instance"] .demo {
+    width: 100%;
+    height: 100%;
+}
+#instance,
+#instance2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    bottom: 0;
+}
+#instance canvas,
+#instance2 canvas {
+    border-radius: 0 !important;
+}
+#instance .btn {
+    border-color: ##090723;
+    background-color: ##090723;
+}

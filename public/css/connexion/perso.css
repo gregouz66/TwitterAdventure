@@ -1,0 +1,17 @@
+body {
+  background: #595494; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #595494, #595494);
+  background: -moz-linear-gradient(right, #595494, #595494);
+  background: -o-linear-gradient(right, #595494, #595494);
+  background: linear-gradient(to left, #595494, #595494);
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow:hidden;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}

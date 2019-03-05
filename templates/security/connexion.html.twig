@@ -1,0 +1,125 @@
+{% extends 'base_connexion.html.twig' %}
+
+{% block title %}{{controller_name}}{% endblock %}
+
+{% block stylesheets %}
+<!-- CSS CONNEXION -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/loader.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/error.css')}}">
+
+<!-- CSS PERSO -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/perso.css')}}">
+
+<!-- CSS BACKGROUND WAVE -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/bg_wave.css')}}">
+
+<!-- CSS FOR FORM LOGIN -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/connexion/form_login.css')}}">
+{% endblock %}
+
+{% block body %}
+<!-- WAVE -->
+<div id="instance">
+    <div class="demo"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-section">
+  <div class="container">
+    <div class="main-section-data">
+      <div class="login-page">
+        <div class="form" style="display:none;">
+          <center><img class="logologin" src="{{asset('images/logo/logoForBgWhite.png')}}" alt="Logo TwittAdventure"></center><br>
+          <form class="register-form" method="post" action="#">
+            <input type="text" name="name" placeholder="Prénom* & Nom*"/>
+            <input type="email" name="email" placeholder="Email*"/>
+            <input type="text" name="message" placeholder="Votre message"/>
+            <button type="submit" value="1" name="submitContact">Soumettre</button>
+            <p class="message">Commencer l'aventure? <br><a href="#">Je veux jouer</a></p>
+          </form>
+          <form class="login-form" autocomplete="off" method="post" action="#">
+              <input type="text" name="pseudo" class="inputPseudo" placeholder="TonPseudo"/>
+            <!-- <input type="password" placeholder="Your Password"/> -->
+            <button type="submit" name="submitPseudo" value="1" class="sendLogin">Let's Go</button>
+            <p class="message">Un problème? <br><a href="#">Contactez-nous</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<!-- JS CONNEXION -->
+<script type="text/javascript" src="{{asset('js/connexion/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/connexion/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/connexion/jquery.mCustomScrollbar.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/slick/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/connexion/loader.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/connexion/script.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/jparticles/jparticles.js')}}"></script>
+<script type="text/javascript" src="{{asset('lib/jparticles/wave_loading.js')}}"></script>
+
+<!-- SCRIPT BG WAVE -->
+<script type="text/javascript">
+  (function () {
+      var instance = document.getElementById('instance');
+      var demo = instance.querySelector('.demo');
+      var loading = new JParticles.waveLoading(demo, {
+
+          font: 'normal 900 30px Arial',
+
+          smallFont: 'normal 900 24px Arial',
+
+          smallFontOffsetTop: 2,
+
+          color: '#090723',
+
+          fillColor: '#090723',
+
+          offsetLeft: 3,
+
+          crestHeight: 8,
+
+          rippleNum: 2,
+
+          speed: .35,
+
+          duration: 3000,
+
+          easing: 'linear'
+      });
+
+      $(".sendLogin").click(function(){
+        loading.done();
+      });
+
+  })();
+</script>
+
+<!-- SCRIPT FORM LOGIN -->
+<script type="text/javascript">
+  $('.message a').click(function(){
+     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  });
+</script>
+
+<!-- IF ERROR CONNEXION -->
+{% for flash_message in app.session.flashbag.get('danger') %}
+  <script type="text/javascript">
+    var errorString = "{{flash_message}}";
+    $(window).on('load', function() {
+      function anime() {
+        $('.error').removeClass("d-none").addClass("animate").html(errorString);
+      };
+      setTimeout(anime, 1500);
+    });
+  </script>
+{% endfor %}
+
+
+{% endblock %}
